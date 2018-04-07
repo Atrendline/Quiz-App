@@ -1,149 +1,147 @@
 package com.example.android.quizapp;
 
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.view.WindowManager;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    int score = 0;
-
+    int score;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        super.onCreate( savedInstanceState );
+        setContentView( R.layout.activity_main );
     }
-
 
     /**
      * This method called when the result button is clicked.
      **/
     public void submit(View view) {
-        EditText nameField = findViewById(R.id.name_field);
+        int score = 0;
+        EditText nameField = (EditText) findViewById( R.id.name_field );
         String name = nameField.getText().toString();
+        if (name.equalsIgnoreCase( "" )) {
+            Toast.makeText( this, R.string.name, Toast.LENGTH_SHORT ).show();
+            return;
+        }
 
-        EditText first_question = findViewById(R.id.answer_first_b);
-        String first_b = first_question.getText().toString();
+        EditText firstQuestion = findViewById( R.id.answer_first_b );
+        String first_b = firstQuestion.getText().toString();
 
-        RadioButton second_question = findViewById(R.id.answer_second_b);
+        RadioButton secondQuestion = findViewById( R.id.answer_second_b );
 
-        RadioButton third_question = findViewById(R.id.answer_third_a);
+        RadioButton thirdQuestion = findViewById( R.id.answer_third_a );
 
-        CheckBox fourth_question_b = findViewById(R.id.answer_fourth_b);
+        CheckBox fourthQuestionA = findViewById( R.id.answer_fourth_a );
 
-        CheckBox fourth_question_d = findViewById(R.id.answer_fourth_d);
+        CheckBox fourthQuestionB = findViewById( R.id.answer_fourth_b );
 
-        RadioButton fifth_question = findViewById(R.id.answer_fifth_b);
+        CheckBox fourthQuestionC = findViewById( R.id.answer_fourth_c );
 
-        RadioButton sixth_question = findViewById(R.id.answer_sixth_a);
+        CheckBox fourthQuestionD = findViewById( R.id.answer_fourth_d );
 
-        RadioButton seventh_question = findViewById(R.id.answer_seventh_b);
+        RadioButton fifthQuestion = findViewById( R.id.answer_fifth_b );
 
-        RadioButton eight_question = findViewById(R.id.answer_eight_b);
+        RadioButton sixthQuestion = findViewById( R.id.answer_sixth_a );
 
-        RadioButton ninth_question = findViewById(R.id.answer_ninth_a);
+        RadioButton seventhQuestion = findViewById( R.id.answer_seventh_b );
 
-        CheckBox tenth_question_b = findViewById(R.id.answer_tenth_b);
+        RadioButton eightQuestion = findViewById( R.id.answer_eight_b );
 
-        CheckBox tenth_question_d = findViewById(R.id.answer_tenth_d);
+        RadioButton ninthQuestion = findViewById( R.id.answer_ninth_a );
 
-        if (first_b.equals("Benjamin"))
+        CheckBox tenthQuestionA = findViewById( R.id.answer_tenth_a );
+
+        CheckBox tenthQuestionB = findViewById( R.id.answer_tenth_b );
+
+        CheckBox tenthQuestionC = findViewById( R.id.answer_tenth_c );
+
+        CheckBox tenthQuestionD = findViewById( R.id.answer_tenth_d );
+
+        if (first_b.equalsIgnoreCase( "Benjamin" ))
 
         {
             score = score + 1;
         }
 
-        if (second_question.isChecked())
+        if (secondQuestion.isChecked())
 
         {
             score = score + 1;
         }
 
-        if (third_question.isChecked())
+        if (thirdQuestion.isChecked())
 
         {
             score = score + 1;
         }
 
-        if (fourth_question_b.isChecked())
+        if (!fourthQuestionA.isChecked() && !fourthQuestionC.isChecked() && fourthQuestionB.isChecked() && fourthQuestionD.isChecked())
 
         {
             score = score + 1;
         }
 
-        if (fourth_question_d.isChecked())
+
+        if (fifthQuestion.isChecked())
 
         {
             score = score + 1;
         }
 
-        if (fifth_question.isChecked())
+        if (sixthQuestion.isChecked())
 
         {
             score = score + 1;
         }
 
-        if (sixth_question.isChecked())
+        if (seventhQuestion.isChecked())
 
         {
             score = score + 1;
         }
 
-        if (seventh_question.isChecked())
+        if (eightQuestion.isChecked())
 
         {
             score = score + 1;
         }
 
-        if (eight_question.isChecked())
+        if (ninthQuestion.isChecked())
 
         {
             score = score + 1;
         }
 
-        if (ninth_question.isChecked())
+        if (!tenthQuestionA.isChecked() && !tenthQuestionC.isChecked() && tenthQuestionB.isChecked() && tenthQuestionD.isChecked())
 
         {
             score = score + 1;
         }
 
-        if (tenth_question_b.isChecked())
 
-        {
-            score = score + 1;
-        }
+        String resultMessage = displayScore( name, score );
 
-        if (tenth_question_d.isChecked())
-
-        {
-            score = score + 1;
-        }
-
-        String resultMessage = displayScore(name, score);
-
-        TextView scoreSummary = (TextView) findViewById(R.id.display_score);
-        scoreSummary.setText(resultMessage);
+        TextView scoreSummary = (TextView) findViewById( R.id.display_score );
+        scoreSummary.setText( resultMessage );
 
     }
-
 
     /**
      * This method displays different score message depending on the score range
      **/
 
     public String displayScore(String name, int score) {
+
+        Toast.makeText( this, score + getString( R.string.points ), Toast.LENGTH_SHORT ).show();
 
         String resultMessage;
 
@@ -161,86 +159,87 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+
     /**
      * This method resets the quiz and go back to the start of the quiz.
      **/
 
     public void reset(View view) {
-        score = 0;
+        int score;
 
-        EditText textField = (EditText) findViewById(R.id.name_field);
-        textField.setText(null);
+        EditText textField = (EditText) findViewById( R.id.name_field );
+        textField.setText( null );
 
-        EditText first_question = (EditText) findViewById(R.id.answer_first_b);
-        first_question.setText(null);
+        EditText firstQuestion = (EditText) findViewById( R.id.answer_first_b );
+        firstQuestion.setText( null );
 
-        RadioGroup radio02 = (RadioGroup) findViewById(R.id.radio02);
+        RadioGroup radio02 = (RadioGroup) findViewById( R.id.radio02 );
         radio02.clearCheck();
 
-        RadioGroup radio03 = (RadioGroup) findViewById(R.id.radio03);
+        RadioGroup radio03 = (RadioGroup) findViewById( R.id.radio03 );
         radio03.clearCheck();
 
-        CheckBox fourth_question_a = (CheckBox) findViewById(R.id.answer_fourth_a);
-        if (fourth_question_a.isChecked()) {
-            fourth_question_a.toggle();
+        CheckBox fourthQuestionA = (CheckBox) findViewById( R.id.answer_fourth_a );
+        if (fourthQuestionA.isChecked()) {
+            fourthQuestionA.toggle();
         }
 
-        CheckBox fourth_question_b = (CheckBox) findViewById(R.id.answer_fourth_b);
-        if (fourth_question_b.isChecked()) {
-            fourth_question_b.toggle();
+        CheckBox fourthQuestionB = (CheckBox) findViewById( R.id.answer_fourth_b );
+        if (fourthQuestionB.isChecked()) {
+            fourthQuestionB.toggle();
         }
 
-        CheckBox fourth_question_c = (CheckBox) findViewById(R.id.answer_fourth_c);
-        if (fourth_question_c.isChecked()) {
-            fourth_question_c.toggle();
+        CheckBox fourth_questionC = (CheckBox) findViewById( R.id.answer_fourth_c );
+        if (fourth_questionC.isChecked()) {
+            fourth_questionC.toggle();
         }
 
-        CheckBox fourth_question_d = (CheckBox) findViewById(R.id.answer_fourth_d);
-        if (fourth_question_d.isChecked()) {
-            fourth_question_d.toggle();
+        CheckBox fourthQuestionD = (CheckBox) findViewById( R.id.answer_fourth_d );
+        if (fourthQuestionD.isChecked()) {
+            fourthQuestionD.toggle();
         }
 
-        RadioGroup radio05 = (RadioGroup) findViewById(R.id.radio05);
+        RadioGroup radio05 = (RadioGroup) findViewById( R.id.radio05 );
         radio05.clearCheck();
 
-        RadioGroup radio06 = (RadioGroup) findViewById(R.id.radio06);
+        RadioGroup radio06 = (RadioGroup) findViewById( R.id.radio06 );
         radio06.clearCheck();
 
-        RadioGroup radio07 = (RadioGroup) findViewById(R.id.radio07);
+        RadioGroup radio07 = (RadioGroup) findViewById( R.id.radio07 );
         radio07.clearCheck();
 
-        RadioGroup radio08 = (RadioGroup) findViewById(R.id.radio08);
+        RadioGroup radio08 = (RadioGroup) findViewById( R.id.radio08 );
         radio08.clearCheck();
 
-        RadioGroup radio09 = (RadioGroup) findViewById(R.id.radio09);
+        RadioGroup radio09 = (RadioGroup) findViewById( R.id.radio09 );
         radio09.clearCheck();
 
-        CheckBox tenth_question_a = (CheckBox) findViewById(R.id.answer_tenth_a);
-        if (tenth_question_a.isChecked()) {
-            tenth_question_a.toggle();
+        CheckBox tenthQuestionA = (CheckBox) findViewById( R.id.answer_tenth_a );
+        if (tenthQuestionA.isChecked()) {
+            tenthQuestionA.toggle();
         }
 
-        CheckBox tenth_question_b = (CheckBox) findViewById(R.id.answer_tenth_b);
-        if (tenth_question_b.isChecked()) {
-            tenth_question_b.toggle();
+        CheckBox tenthQuestionB = (CheckBox) findViewById( R.id.answer_tenth_b );
+        if (tenthQuestionB.isChecked()) {
+            tenthQuestionB.toggle();
         }
 
-        CheckBox tenth_question_c = (CheckBox) findViewById(R.id.answer_tenth_c);
-        if (tenth_question_c.isChecked()) {
-            tenth_question_c.toggle();
+        CheckBox tenthQuestionC = (CheckBox) findViewById( R.id.answer_tenth_c );
+        if (tenthQuestionC.isChecked()) {
+            tenthQuestionC.toggle();
         }
 
-        CheckBox tenth_question_d = (CheckBox) findViewById(R.id.answer_tenth_d);
-        if (tenth_question_d.isChecked()) {
-            tenth_question_d.toggle();
+        CheckBox tenthQuestionD = (CheckBox) findViewById( R.id.answer_tenth_d );
+        if (tenthQuestionD.isChecked()) {
+            tenthQuestionD.toggle();
         }
 
-        ScrollView scroll = (ScrollView) findViewById(R.id.scroll);
-        scroll.fullScroll(ScrollView.FOCUS_UP);
-        scroll.setFocusableInTouchMode(true);
+        ScrollView scroll = (ScrollView) findViewById( R.id.scroll );
+        scroll.fullScroll( ScrollView.FOCUS_UP );
+        scroll.setFocusableInTouchMode( true );
 
-        TextView displayScore = (TextView) findViewById(R.id.display_score);
-        displayScore.setText(null);
+        TextView displayScore = (TextView) findViewById( R.id.display_score );
+        displayScore.setText( null );
 
     }
 

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/scroll"
     android:layout_width="match_parent"
@@ -9,13 +8,13 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         tools:context=".MainActivity">
 
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
             android:paddingBottom="16dp"
             android:paddingLeft="16dp"
@@ -60,9 +59,9 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="50dp"
                 android:layout_marginBottom="16dp"
-                android:text="@string/first_question" />
+                android:layout_marginTop="50dp"
+                android:text="@string/firstQuestion" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -100,7 +99,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
-                android:text="@string/second_question" />
+                android:text="@string/secondQuestion" />
 
             <RadioGroup
                 android:id="@+id/radio02"
@@ -127,7 +126,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
-                android:text="@string/third_question" />
+                android:text="@string/thirdQuestion" />
 
             <RadioGroup
                 android:id="@+id/radio03"
@@ -154,7 +153,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
-                android:text="@string/fourth_question" />
+                android:text="@string/fourthQuestion" />
 
             <CheckBox
                 android:id="@+id/answer_fourth_a"
@@ -193,7 +192,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
-                android:text="@string/fifth_question" />
+                android:text="@string/fifthQuestion" />
 
             <RadioGroup
                 android:id="@+id/radio05"
@@ -220,7 +219,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
-                android:text="@string/sixth_question" />
+                android:text="@string/sixthQuestion" />
 
             <RadioGroup
                 android:id="@+id/radio06"
@@ -247,7 +246,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
-                android:text="@string/seventh_question" />
+                android:text="@string/seventhQuestion" />
 
             <RadioGroup
                 android:id="@+id/radio07"
@@ -274,7 +273,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
-                android:text="@string/eight_question" />
+                android:text="@string/eightQuestion" />
 
             <RadioGroup
                 android:id="@+id/radio08"
@@ -307,7 +306,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
-                android:text="@string/ninth_question" />
+                android:text="@string/ninthQuestion" />
 
             <RadioGroup
                 android:id="@+id/radio09"
@@ -340,7 +339,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
-                android:text="@string/tenth_question" />
+                android:text="@string/tenthQuestion" />
 
             <CheckBox
                 android:id="@+id/answer_tenth_a"
